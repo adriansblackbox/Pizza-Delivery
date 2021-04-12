@@ -4,11 +4,13 @@ class Menu extends Phaser.Scene{
         super("menuScene");
     }
     preload(){
+        // load audio
         this.load.audio('sfx_select', 'assets/blip_select12.wav');
         this.load.audio('sfx_select', 'assets/explosion_explosion38.wav');
         this.load.audio('sfx_rocket', 'assets/rocket_shot.wav');
     }
     create(){
+        // Menu font size and style settings
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
@@ -21,18 +23,31 @@ class Menu extends Phaser.Scene{
             },
             fixedWidth:0
         }
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - 
-            borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 
-            'Use ← → arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
+
+        // Add title
+        this.add.text(
+            game.config.width/2, 
+            game.config.height/2 - borderUISize - borderPadding, 
+            'ROCKET PATROL', 
+            menuConfig).setOrigin(0.5);
+
+        // Add instructions
+        this.add.text(
+            game.config.width/2, 
+            game.config.height/2, 
+            'Use ← → arrows to move & (F) to fire', 
+            menuConfig).setOrigin(0.5);
+
+        // Add Dificulty Settings
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + 
-            borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
-        
 
+        this.add.text(game.config.width/2, 
+            game.config.height/2 + borderUISize + borderPadding, 
+            'Press ← for Novice or → for Expert', 
+            menuConfig).setOrigin(0.5);
 
-
+        // key input configuration
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
