@@ -3,7 +3,7 @@ class Play extends Phaser.Scene {
         super("playScene1");
     }
     preload(){
-        this.load.image('starfield', 'assets/starfield.png');
+        this.load.image('starfield', 'assets/pizzatable.png');
         this.load.image('rocket', 'assets/pizza.png');
         this.load.image('spaceship', 'assets/pizzabox.png');
         this.load.spritesheet('explosion', 'assets/pizzaboxani.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 4});
@@ -119,7 +119,7 @@ class Play extends Phaser.Scene {
         }
 
         // starfield movement
-        this.starfield.tilePositionX -= 4;
+        this.starfield.tilePositionX -= 1.5;
 
         // freeze assets if game is over, otherwise, update positions
         if (!this.gameOver) {               
