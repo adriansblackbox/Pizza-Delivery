@@ -35,7 +35,7 @@ class Menu extends Phaser.Scene{
         this.add.text(
           game.config.width/2, 
           game.config.height/2, 
-          'Use ← → to move & ↑ to fire', 
+          'Use (A) (D) to move & (W) to fire', 
           menuConfig).setOrigin(0.5);
 
         // Add Dificulty Settings
