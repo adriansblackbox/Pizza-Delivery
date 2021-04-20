@@ -4,9 +4,9 @@ class Play2 extends Phaser.Scene {
     }
     preload(){
         this.load.image('starfield', 'assets/starfield.png');
-        this.load.image('rocket', 'assets/rocket.png');
-        this.load.image('spaceship', 'assets/spaceship.png');
-        this.load.spritesheet('explosion', 'assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.image('rocket', 'assets/pizza.png');
+        this.load.image('spaceship', 'assets/pizzabox.png');
+        this.load.spritesheet('explosion', 'assets/pizzaboxani.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 4});
 
         this.load.audio('sfx_select', 'assets/blip_select12.wav');
         this.load.audio('sfx_explosion', 'assets/explosion38.wav');
@@ -54,8 +54,8 @@ class Play2 extends Phaser.Scene {
         // configure animations for explosion
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
-            frameRate: 30
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 4, first: 0}),
+            frameRate: 10
         });
 
         // initialize score
