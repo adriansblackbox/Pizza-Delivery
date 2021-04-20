@@ -1,7 +1,6 @@
-
-class Menu extends Phaser.Scene{
+class Premenu extends Phaser.Scene{
     constructor(){
-        super("menuScene1");
+        super("menuScene");
     }
     preload(){
         // load audio
@@ -30,47 +29,24 @@ class Menu extends Phaser.Scene{
             game.config.height/2 - borderUISize - borderPadding, 
             'ROCKET PATROL', 
             menuConfig).setOrigin(0.5);
-
-        // Add instructions
         this.add.text(
-          game.config.width/2, 
-          game.config.height/2, 
-          'Use ← → to move & ↑ to fire', 
-          menuConfig).setOrigin(0.5);
+            game.config.width/2, 
+            game.config.height/2, 
+            'Press ← for single player or → for two players', 
+            menuConfig).setOrigin(0.5);
 
-        // Add Dificulty Settings
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
-
-        this.add.text(
-          game.config.width/2, 
-          game.config.height/2 + borderUISize + borderPadding, 
-          'Press ← for Novice or → for Expert', 
-          menuConfig).setOrigin(0.5);
-
-        // key input configuration
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
-
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-          // easy mode
-            game.settings = {
-            spaceshipSpeed: 3,
-            gameTimer: 60000    
-          }
+          
           this.sound.play('sfx_select');
-          this.scene.start('playScene1');    
+          this.scene.start('menuScene1');    
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-          // hard mode
-          game.settings = {
-            spaceshipSpeed: 4,
-            gameTimer: 45000    
-          }
           this.sound.play('sfx_select');
-          this.scene.start('playScene1');    
+          this.scene.start('menuScene2');    
         }
       }
 }

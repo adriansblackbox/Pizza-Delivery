@@ -1,7 +1,6 @@
-
-class Menu extends Phaser.Scene{
+class Menu2 extends Phaser.Scene{
     constructor(){
-        super("menuScene1");
+        super("menuScene2");
     }
     preload(){
         // load audio
@@ -33,9 +32,15 @@ class Menu extends Phaser.Scene{
 
         // Add instructions
         this.add.text(
+            game.config.width/2, 
+            game.config.height/2, 
+            'Player 1: Use (A) (D) to move & (W) to fire', 
+            menuConfig).setOrigin(0.5);
+
+        this.add.text(
           game.config.width/2, 
-          game.config.height/2, 
-          'Use ← → to move & ↑ to fire', 
+          game.config.height/2 + borderUISize + borderPadding, 
+          'Player 2: Use ← → to move & ↑ to fire', 
           menuConfig).setOrigin(0.5);
 
         // Add Dificulty Settings
@@ -44,7 +49,7 @@ class Menu extends Phaser.Scene{
 
         this.add.text(
           game.config.width/2, 
-          game.config.height/2 + borderUISize + borderPadding, 
+          game.config.height/2 + borderUISize*2 + borderPadding*2, 
           'Press ← for Novice or → for Expert', 
           menuConfig).setOrigin(0.5);
 
@@ -61,7 +66,7 @@ class Menu extends Phaser.Scene{
             gameTimer: 60000    
           }
           this.sound.play('sfx_select');
-          this.scene.start('playScene1');    
+          this.scene.start('playScene2');    
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
           // hard mode
@@ -70,7 +75,7 @@ class Menu extends Phaser.Scene{
             gameTimer: 45000    
           }
           this.sound.play('sfx_select');
-          this.scene.start('playScene1');    
+          this.scene.start('playScene2');    
         }
       }
 }
