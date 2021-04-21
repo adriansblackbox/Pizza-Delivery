@@ -33,9 +33,9 @@ class Play2 extends Phaser.Scene {
         this.ship3 = new Ship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
 
         // green rectangle at the top
-        this.add.rectangle(0, borderUISize + borderPadding, 
-                           game.config.width, borderUISize * 2, 
-                           0x00FF00).setOrigin(0,0);
+        //this.add.rectangle(0, borderUISize + borderPadding, 
+                          // game.config.width, borderUISize * 2, 
+                           //0xCD212A).setOrigin(0,0);
         // white borders
 	    this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0 ,0);
 	    this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0 ,0);
