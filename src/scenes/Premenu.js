@@ -13,8 +13,8 @@ class Premenu extends Phaser.Scene{
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '22px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#CD212A',
+            color: '#FFFFFF',
             align: 'right',
             padding: {
                 top: 5,
@@ -27,8 +27,11 @@ class Premenu extends Phaser.Scene{
         this.add.text(
             game.config.width/2, 
             game.config.height/2 - borderUISize - borderPadding, 
-            'ROCKET PATROL', 
+            'PIZZA  DELIVERY', 
             menuConfig).setOrigin(0.5);
+
+        menuConfig.backgroundColor = '#008c45';
+
         this.add.text(
             game.config.width/2, 
             game.config.height/2, 

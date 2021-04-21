@@ -13,8 +13,8 @@ class Menu2 extends Phaser.Scene{
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '22px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#CD212A',
+            color: '#FFFFFF',
             align: 'right',
             padding: {
                 top: 5,
@@ -22,14 +22,6 @@ class Menu2 extends Phaser.Scene{
             },
             fixedWidth:0
         }
-
-        // Add title
-        this.add.text(
-            game.config.width/2, 
-            game.config.height/2 - borderUISize - borderPadding, 
-            'ROCKET PATROL', 
-            menuConfig).setOrigin(0.5);
-
         // Add instructions
         this.add.text(
             game.config.width/2, 
@@ -44,8 +36,7 @@ class Menu2 extends Phaser.Scene{
           menuConfig).setOrigin(0.5);
 
         // Add Dificulty Settings
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
+        menuConfig.backgroundColor = '#008c45';
 
         this.add.text(
           game.config.width/2, 

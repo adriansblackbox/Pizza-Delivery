@@ -66,14 +66,27 @@ class Play2 extends Phaser.Scene {
         let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#CD212A',
+            color: '#FFFFFF',
             align: 'right',
             padding: {
               top: 5,
               bottom: 5,
             },
             fixedWidth: 100
+          }
+
+          let timeConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#008c45',
+            color: '#FFFFFF',
+            align: 'center',
+            padding: {
+              top: 5,
+              bottom: 5,
+            },
+            fixedWidth: 40
           }
 
 
@@ -130,7 +143,7 @@ class Play2 extends Phaser.Scene {
 
 
         // Each 1000 ms call onEvent
-        this.timeRemaining = this.add.text(game.config.width/2, borderUISize + borderPadding*2, this.timeLeft, scoreConfig);
+        this.timeRemaining = this.add.text(game.config.width/2, borderUISize + borderPadding*2, this.timeLeft, timeConfig);
         //this.timeRemaining.text = this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
     }
 
