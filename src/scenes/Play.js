@@ -9,8 +9,8 @@ class Play extends Phaser.Scene {
         this.load.spritesheet('explosion', 'assets/pizzaboxani.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 4});
 
         this.load.audio('sfx_select', 'assets/blip_select12.wav');
-        this.load.audio('sfx_explosion', 'assets/explosion38.wav');
-        this.load.audio('sfx_rocket', 'assets/rocket_shot.wav');
+        this.load.audio('sfx_explosion', 'assets/boxclosing.wav');
+        this.load.audio('sfx_rocket', 'assets/pizzatoss.wav');
     }
 
     create(){
@@ -41,6 +41,8 @@ class Play extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        //keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
         // configure animations for explosion
         this.anims.create({
@@ -87,10 +89,13 @@ class Play extends Phaser.Scene {
 
         // GAME OVER logic
         this.gameOver = false;
+        // timer initialized
+        this.timerupdate = false;
+        this.delayCalled = true;
 
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
+        this.clock = this.time.delayedCall(game.settings.gameTimer + 1000, () => {
 
             this.add.text(
                 game.config.width/2, 
@@ -107,22 +112,32 @@ class Play extends Phaser.Scene {
 
         }, null, this);
 
-
-        if(game.settings.gameTimer == 60000){
-            this.timeLeft = 60;
-        }else if (game.settings.gameTimer == 45000){
-            this.timeLeft = 45;
-        }
-
-
        
-        this.timeRemaining = this.add.text(game.config.width/2, borderUISize + borderPadding*2, this.timeLeft, timeConfig);
-        //this.timeRemaining.text = this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
+        this.timeRemaining = this.add.text(game.config.width/2, borderUISize + borderPadding*2, game.settings.gameTimer/1000 - 1, timeConfig);
+        
     }
 
 
     // called every frame
     update(){
+        
+        if(this.timerupdate && !this.gameOver){
+
+            this.timeRemaining.text -= 1;
+            this.timerupdate = false;
+    
+        }else if (this.delayCalled){
+            this.time.delayedCall(1000, () => {
+    
+                this.timerupdate = true;
+                this.delayCalled = true;
+            },  null, this);
+            this.delayCalled = false;
+        }
+        
+
+        
+
         // restart configuration
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
@@ -193,5 +208,5 @@ class Play extends Phaser.Scene {
           boom.destroy();
         });       
         
-      }
+    }
 }
