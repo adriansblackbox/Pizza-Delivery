@@ -108,7 +108,7 @@ class Play2 extends Phaser.Scene {
 
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(game.settings.gameTimer - 1000, () => {
+        this.clock = this.time.delayedCall(game.settings.gameTimer + 1000, () => {
 
             if(this.p1Wins && !this.tie){
                 this.add.text(
