@@ -21,6 +21,13 @@ let config = {
     width:640,
     height:480,
     scene: [Premenu, Menu, Menu2, Play, Play2],
+
+    pixelArt: true,
+    // scale game logic
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
 }
 let game = new Phaser.Game(config);
 
